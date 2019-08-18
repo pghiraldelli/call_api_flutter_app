@@ -10,7 +10,8 @@ Future<List<Team>> getTeams(teamID) async {
 
   if (_isResponseSuccess(response)) {
     var jsonTeamList = json.decode(response.body)['Times'];
-    return getListOfTeamObject(jsonTeamList);
+    if(jsonTeamList != null) return getListOfTeamObject(jsonTeamList);
+    return null;
   } else {
     throw Exception('Failed to load post');
   }

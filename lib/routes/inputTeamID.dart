@@ -58,5 +58,3 @@ class _InputTeamIDState extends State<InputTeamID> {
         ));
   }
 }
-
-}

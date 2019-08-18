@@ -14,6 +14,7 @@ class ListTeams extends StatefulWidget {
 }
 
 class _ListTeamsState extends State<ListTeams> {
+  final _biggerFont = const TextStyle(fontSize: 18.0);
   List<Team> _teams = <Team>[];
 
   @override
@@ -28,10 +29,10 @@ class _ListTeamsState extends State<ListTeams> {
       centerTitle: true,
       title: Text('Calling API'),
     ),
-    body: ListView.builder(
+    body: _teams.length > 0 ? ListView.builder(
       itemCount: _teams.length,
       itemBuilder: (context, index) => TeamTitle(_teams[index]),
-    ),
+    ) : Text('There is nothing to show', style: _biggerFont),
   );
 
   void listenForTeam() async {
