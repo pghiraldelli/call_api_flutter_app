@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'routes/home.dart';
+import 'routes/inputTeamID.dart';
 
 class CallingAPIApp extends StatelessWidget {
   @override
@@ -9,6 +9,6 @@ class CallingAPIApp extends StatelessWidget {
         primaryColor: Colors.black,
         accentColor: Colors.black
     ),
-    home: Home(),
+    home: InputTeamID(),
   );
 }

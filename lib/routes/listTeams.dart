@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:calling_api/models/team.dart';
 
 
-class Home extends StatefulWidget {
+class ListTeams extends StatefulWidget {
+  final String teamID;
+
+  ListTeams({Key key, @required this.teamID}) : super(key: key);
+
   @override
-  _HomeState createState() => _HomeState();
+  _ListTeamsState createState() => _ListTeamsState();
 }
 
-class _HomeState extends State<Home> {
+class _ListTeamsState extends State<ListTeams> {
   List<Team> _teams = <Team>[];
 
   @override
@@ -31,7 +35,7 @@ class _HomeState extends State<Home> {
   );
 
   void listenForTeam() async {
-    final List<Team> teams = await getTeams();
-    teams.forEach((Team team) => setState(() =>  _teams.add(team)));
+    final List<Team> teams = await getTeams(widget.teamID);
+    if(teams != null) teams.forEach((Team team) => setState(() =>  _teams.add(team)));
   }
 }

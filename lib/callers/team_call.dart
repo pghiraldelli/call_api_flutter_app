@@ -2,13 +2,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/team.dart';
 
-Future<List<Team>> getTeams() async {
-  final url = 'http://flowserv.com.br/apis/times.php?EquipeID=7';
+Future<List<Team>> getTeams(teamID) async {
+  if(teamID == null) return null;
+  final url = 'http://flowserv.com.br/apis/times.php?EquipeID=${teamID}';
 
   var response = await http.get(url);
 
   if (_isResponseSuccess(response)) {
-
     var jsonTeamList = json.decode(response.body)['Times'];
     return getListOfTeamObject(jsonTeamList);
   } else {
